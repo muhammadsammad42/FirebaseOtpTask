@@ -35,7 +35,7 @@ export default function App() {
           <OTPScreen
             phoneNumber={phoneNumber}
             confirmation={confirmation}
-            onVerified={restart}
+            onVerified={() => setScreen('success')}
             onFailed={(message) => {
               setErrorMessage(message);
               setScreen('failure');

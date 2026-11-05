@@ -39,3 +39,12 @@ yarn-error.*
 # generated native folders
 /ios
 /android
+
+# Firebase Android configuration contains project identifiers; provide locally
+/google-services.json
+/google-services.*.json
+/GoogleService-Info.plist
+
+# EAS/local credentials and generated build output
+.eas/
+credentials.json

@@ -1,6 +1,15 @@
+import { Platform } from 'react-native';
 import auth from '@react-native-firebase/auth';
 
+export const isFirebasePhoneTestModeEnabled =
+  __DEV__ &&
+  Platform.OS === 'android' &&
+  process.env.EXPO_PUBLIC_FIREBASE_PHONE_AUTH_TESTING === 'true';
+
 export async function requestPhoneCode(phoneNumber) {
+  if (Platform.OS === 'android') {
+    auth().settings.appVerificationDisabledForTesting = isFirebasePhoneTestModeEnabled;
+  }
   return auth().signInWithPhoneNumber(phoneNumber);
 }
 

@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "i233042_Task4",
-    "slug": "i233042_Task4",
+    "name": "Phone OTP Verification",
+    "slug": "phone-otp-verification",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
@@ -10,6 +10,8 @@
       "supportsTablet": true
     },
     "android": {
+      "package": "com.quiz4.phoneotpverification",
+      "googleServicesFile": "./google-services.json",
       "adaptiveIcon": {
         "backgroundColor": "#E6F4FE",
         "foregroundImage": "./assets/android-icon-foreground.png",
@@ -17,8 +19,18 @@
         "monochromeImage": "./assets/android-icon-monochrome.png"
       }
     },
+    "plugins": [
+      "@react-native-firebase/app",
+      "@react-native-firebase/auth",
+      "expo-dev-client"
+    ],
     "web": {
       "favicon": "./assets/favicon.png"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "f0b60281-0340-4c41-8d94-ca6de4ff0b35"
+      }
     }
   }
 }

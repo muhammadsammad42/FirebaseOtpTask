@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { KeyboardAvoidingView, Platform, ScrollView, StyleSheet, Text, View } from 'react-native';
 import CustomButton from '../components/CustomButton';
 import PhoneInput from '../components/PhoneInput';
-import { getPhoneAuthError, requestPhoneCode } from '../services/firebase';
+import { getPhoneAuthError, isFirebasePhoneTestModeEnabled, requestPhoneCode } from '../services/firebase';
 
 const DEFAULT_COUNTRY = { name: 'Pakistan', dial: '+92', flag: '🇵🇰' };
 
@@ -51,6 +51,11 @@ export default function PhoneNumberScreen({ onCodeSent }) {
         <View style={styles.brandIcon}><Text style={styles.brandIconText}>✓</Text></View>
         <Text style={styles.title}>Phone OTP{'\n'}Verification</Text>
         <Text style={styles.subtitle}>Verify your mobile number securely.</Text>
+        {isFirebasePhoneTestModeEnabled && (
+          <Text style={styles.testMode}>
+            Firebase test-phone mode is active. Configured test numbers do not receive SMS.
+          </Text>
+        )}
 
         <View style={styles.card}>
           <Text style={styles.cardTitle}>Get started</Text>
@@ -74,6 +79,7 @@ const styles = StyleSheet.create({
   brandIconText: { color: '#1769D2', fontSize: 27, fontWeight: '800' },
   title: { color: '#17263C', fontSize: 34, lineHeight: 40, fontWeight: '800', letterSpacing: -0.8 },
   subtitle: { color: '#6E7D91', fontSize: 16, marginTop: 10, marginBottom: 30 },
+  testMode: { color: '#8A5A00', backgroundColor: '#FFF4D6', padding: 12, borderRadius: 12, fontSize: 13, lineHeight: 18, marginTop: -16, marginBottom: 20 },
   card: { backgroundColor: '#FFFFFF', borderRadius: 22, padding: 22, shadowColor: '#203A5C', shadowOffset: { width: 0, height: 8 }, shadowOpacity: 0.07, shadowRadius: 18, elevation: 3 },
   cardTitle: { color: '#17263C', fontSize: 20, fontWeight: '700' },
   cardDescription: { color: '#78869A', fontSize: 14, lineHeight: 21, marginTop: 7, marginBottom: 23 },
